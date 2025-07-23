@@ -7,7 +7,6 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT; // Railway requires using only process.env.PORT
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-
 console.log('OPENROUTER_API_KEY:', OPENROUTER_API_KEY ? OPENROUTER_API_KEY.slice(0, 5) + '...' : 'NOT SET');
 
 if (!OPENROUTER_API_KEY) {
@@ -41,6 +40,7 @@ app.post('/api/v1/chat', async (req, res) => {
       {
         model: 'anthropic/claude-3-sonnet',
         messages,
+        max_tokens: 600, // Set max_tokens to 600 for chat-based responses
         ...(context_item ? { context_item } : {}),
       },
       {
