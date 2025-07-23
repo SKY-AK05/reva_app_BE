@@ -8,6 +8,8 @@ const app = express();
 const PORT = process.env.PORT; // Railway requires using only process.env.PORT
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 
+console.log('OPENROUTER_API_KEY:', OPENROUTER_API_KEY ? OPENROUTER_API_KEY.slice(0, 5) + '...' : 'NOT SET');
+
 if (!OPENROUTER_API_KEY) {
   console.error('ERROR: OPENROUTER_API_KEY is not set in .env');
   process.exit(1);
